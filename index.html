@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>(+90)DME Cümle Uygulaması</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Orbitron:wght@700;900&display=swap" rel="stylesheet">
+
+    <style>
+
+        :root {
+            --bg: #020617;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --accent: #38bdf8;
+            --neon: #0ea5e9;
+            --border: #334155;
+            --yt-red: #ff0000;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+
+            background:
+                radial-gradient(
+                    circle at 50% 25%,
+                    rgba(14, 165, 233, 0.08),
+                    transparent 35%
+                ),
+                var(--bg);
+
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1000px;
+            margin: auto;
+            padding: 25px 20px 0;
+        }
+
+        /* =========================
+           ÜST BİLGİ PANELİ
+        ========================= */
+
+        .top-info {
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+
+            padding: 15px 22px;
+
+            background: rgba(30, 41, 59, 0.45);
+
+            border: 1px solid var(--border);
+            border-radius: 16px;
+
+            margin-bottom: 35px;
+        }
+
+        .info-box {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+
+            min-width: 0;
+        }
+
+        .support-box {
+            justify-content: flex-end;
+            text-align: right;
+        }
+
+        .youtube-icon {
+            color: var(--yt-red);
+            flex-shrink: 0;
+        }
+
+        .info-title {
+            color: var(--muted);
+
+            font-size: 0.7rem;
+            font-weight: 800;
+
+            text-transform: uppercase;
+            letter-spacing: 2px;
+
+            margin-bottom: 3px;
+        }
+
+        .info-value {
+            color: var(--accent);
+
+            font-size: 0.95rem;
+            font-weight: 700;
+
+            white-space: nowrap;
+        }
+
+
+        /* =========================
+           ANDROID ROZETİ
+        ========================= */
+
+        .android-badge {
+            width: fit-content;
+
+            margin: 0 auto 30px;
+
+            padding: 11px 25px;
+
+            border-radius: 30px;
+
+            border: 1px solid rgba(14, 165, 233, 0.35);
+
+            background: rgba(14, 165, 233, 0.07);
+
+            color: var(--accent);
+
+            font-size: 0.85rem;
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            box-shadow:
+                0 0 20px rgba(14, 165, 233, 0.08);
+        }
+
+        .android-badge::before {
+            content: "●";
+
+            color: #3b82f6;
+
+            margin-right: 10px;
+        }
+
+
+        /* =========================
+           ANA BAŞLIK
+        ========================= */
+
+        .header {
+            text-align: center;
+
+            margin-bottom: 45px;
+        }
+
+        .header h1 {
+            margin: 0;
+
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: clamp(2rem, 7vw, 4rem);
+
+            font-weight: 900;
+
+            color: #ffffff;
+
+            text-shadow:
+                0 0 10px rgba(14, 165, 233, 0.8),
+                0 0 25px rgba(14, 165, 233, 0.35);
+        }
+
+        .header h1 span {
+            color: var(--accent);
+
+            font-style: italic;
+        }
+
+        .description {
+            max-width: 780px;
+
+            margin: 25px auto 0;
+
+            color: var(--muted);
+
+            font-size: clamp(1rem, 3vw, 1.2rem);
+
+            line-height: 1.7;
+
+            font-weight: 500;
+        }
+
+
+        /* =========================
+           UYGULAMA KARTI
+        ========================= */
+
+        .download-card {
+
+            width: 100%;
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(30, 41, 59, 0.9),
+                    rgba(15, 23, 42, 0.95)
+                );
+
+            border: 1px solid var(--border);
+
+            border-radius: 28px;
+
+            padding: 55px 30px;
+
+            text-align: center;
+
+            box-shadow:
+                0 20px 60px rgba(0, 0, 0, 0.35),
+                0 0 35px rgba(14, 165, 233, 0.05);
+        }
+
+
+        /* =========================
+           UYGULAMA İKONU
+        ========================= */
+
+        .app-icon {
+
+            width: 82px;
+            height: 82px;
+
+            margin: 0 auto 25px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 22px;
+
+            background: rgba(14, 165, 233, 0.08);
+
+            border: 1px solid rgba(56, 189, 248, 0.25);
+
+            font-size: 40px;
+
+            box-shadow:
+                0 0 30px rgba(14, 165, 233, 0.12);
+        }
+
+
+        /* =========================
+           UYGULAMA BAŞLIĞI
+        ========================= */
+
+        .download-card h2 {
+
+            margin: 0 0 15px;
+
+            font-family: 'Orbitron', sans-serif;
+
+            font-size: clamp(1.6rem, 5vw, 2.5rem);
+
+            font-weight: 900;
+
+            color: #ffffff;
+        }
+
+        .download-card h2 span {
+            color: var(--accent);
+        }
+
+
+        /* =========================
+           AÇIKLAMA
+        ========================= */
+
+        .app-description {
+
+            max-width: 650px;
+
+            margin: 0 auto 32px;
+
+            color: var(--muted);
+
+            font-size: 1rem;
+
+            line-height: 1.8;
+        }
+
+
+        /* =========================
+           İNDİRME BUTONU
+        ========================= */
+
+        .download-button {
+
+            display: inline-block;
+
+            padding: 18px 48px;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            text-decoration: none;
+
+            border-radius: 18px;
+
+            font-size: 1.15rem;
+
+            font-weight: 800;
+
+            transition:
+                0.25s ease;
+
+            box-shadow:
+                0 10px 30px rgba(37, 99, 235, 0.25);
+        }
+
+        .download-button:hover {
+
+            background: var(--neon);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 40px rgba(14, 165, 233, 0.35);
+        }
+
+        .download-button:active {
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           DOSYA BİLGİSİ
+        ========================= */
+
+        .file-info {
+
+            margin-top: 22px;
+
+            color: var(--muted);
+
+            font-size: 0.9rem;
+        }
+
+
+        /* =========================
+           ALT BÖLÜM
+        ========================= */
+
+        footer {
+
+            margin-top: 70px;
+
+            padding: 45px 20px;
+
+            text-align: center;
+
+            border-top:
+                1px solid rgba(51, 65, 85, 0.55);
+        }
+
+        .footer-brand {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 12px;
+
+            margin-bottom: 22px;
+
+            color: var(--accent);
+
+            font-size: 1.2rem;
+
+            font-weight: 800;
+        }
+
+        .footer-brand svg {
+            color: var(--yt-red);
+        }
+
+        .copyright {
+
+            margin: 0;
+
+            color: var(--muted);
+
+            font-size: 0.95rem;
+        }
+
+
+        /* =========================
+           MOBİL
+        ========================= */
+
+        @media (max-width: 600px) {
+
+            .container {
+                padding: 15px 12px 0;
+            }
+
+            .top-info {
+                grid-template-columns: 1fr 1fr;
+
+                padding: 13px 10px;
+
+                gap: 5px;
+            }
+
+            .info-box {
+                gap: 7px;
+            }
+
+            .support-box {
+                justify-content: flex-end;
+            }
+
+            .youtube-icon svg {
+                width: 30px;
+                height: 24px;
+            }
+
+            .info-title {
+                font-size: 0.5rem;
+                letter-spacing: 1px;
+            }
+
+            .info-value {
+                font-size: 0.63rem;
+            }
+
+            .android-badge {
+                font-size: 0.7rem;
+                padding: 10px 18px;
+            }
+
+            .header {
+                margin-bottom: 35px;
+            }
+
+            .description {
+                font-size: 0.95rem;
+                padding: 0 8px;
+            }
+
+            .download-card {
+                padding: 45px 18px;
+
+                border-radius: 24px;
+            }
+
+            .app-icon {
+                width: 72px;
+                height: 72px;
+                font-size: 34px;
+            }
+
+            .app-description {
+                font-size: 0.92rem;
+            }
+
+            .download-button {
+                width: 100%;
+                max-width: 320px;
+
+                padding: 17px 20px;
+            }
+
+            footer {
+                margin-top: 55px;
+                padding: 35px 10px;
+            }
+
+            .copyright {
+                font-size: 0.82rem;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+
+    <!-- =========================
+         ÜST BİLGİ
+    ========================= -->
+
+    <div class="top-info">
+
+        <!-- GELİŞTİRİCİ -->
+        <div class="info-box">
+
+            <div class="youtube-icon">
+
+                <svg
+                    width="38"
+                    height="28"
+                    viewBox="0 0 24 24"
+                    fill="currentColor">
+
+                    <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
+
+                </svg>
+
+            </div>
+
+            <div>
+
+                <div class="info-title">
+                    Geliştirici
+                </div>
+
+                <div class="info-value">
+                    +90DarkPixel
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- DESTEK -->
+        <div class="info-box support-box">
+
+            <div>
+
+                <div class="info-title">
+                    Destek
+                </div>
+
+                <div class="info-value">
+                    h77412274@gmail.com
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ANDROID ROZETİ
+    ========================= -->
+
+    <div class="android-badge">
+        ANDROID UYGULAMASI
+    </div>
+
+
+    <!-- =========================
+         ANA BAŞLIK
+    ========================= -->
+
+    <div class="header">
+
+        <h1>
+            (+90)DarkMaster <span>English</span>
+        </h1>
+
+        <p class="description">
+
+            (+90)DarkMaster English cümle sitesinin
+            mobil uygulaması artık Android cihazınızda.
+            İngilizce cümlelerde fiillerin V2 ve V3
+            hallerini kolayca öğrenin.
+
+        </p>
+
+    </div>
+
+
+    <!-- =========================
+         UYGULAMA / İNDİRME KARTI
+    ========================= -->
+
+    <div class="download-card">
+
+        <div class="app-icon">
+            📱
+        </div>
+
+
+        <h2>
+            (+90)DME <span>Cümle Uygulaması</span>
+        </h2>
+
+
+        <p class="app-description">
+
+            (+90)DarkMaster English'in cümle sitesi için
+            hazırlanan Android uygulama sürümüdür.
+            Cümlelerinizi girin ve fiillerin V2 ve V3
+            hallerini doğrudan telefonunuzdan öğrenin.
+
+        </p>
+
+
+        <!-- APK LİNKİNİ BURAYA KOY -->
+        <a
+            href="BURAYA-APK-RELEASE-LINKINI-YAPISTIR"
+            class="download-button">
+
+            APK'yı İndirin
+
+        </a>
+
+
+        <div class="file-info">
+            Android • APK • (+90)DME Cümle
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ALT BİLGİ
+    ========================= -->
+
+    <footer>
+
+        <div class="footer-brand">
+
+            <svg
+                width="42"
+                height="30"
+                viewBox="0 0 24 24"
+                fill="currentColor">
+
+                <path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.6 12 3.6 12 3.6s-7.5 0-9.4.5A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.5 9.4.5 9.4.5s7.5 0 9.4-.5a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
+
+            </svg>
+
+            +90DarkPixel
+
+        </div>
+
+
+        <p class="copyright">
+            © 2026 (+90)DarkMaster - Tüm Hakları Saklıdır.
+        </p>
+
+    </footer>
+
+</div>
+
+</body>
+</html>
